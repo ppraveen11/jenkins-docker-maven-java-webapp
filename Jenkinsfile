@@ -80,6 +80,42 @@ pipeline {
                    }
             }
                 
+          stage('approved') {
+            steps {
+                
+            
+            script {
+                Boolean userInput = input(id: 'Proceed1', message: 'Promote build?', parameters: [[$class: 'BooleanParameterDefinition', defaultValue: true, description: '', name: 'Please confirm you agree with this']])
+                echo 'userInput: ' + userInput
+
+                if(userInput == true) {
+                    // do action
+                } else {
+                    // not do action
+                    echo "Action was aborted."
+                }
+            
+                
+            }
+        }
+        }
+          stage("Deploying WEBAPP in prod env "){ 
+            steps{ 
+                
+                sshagent(['FORQAT']) {
+              // some block
+                 sh 'ssh  -o  StrictHostKeyChecking=no ec2-user@43.205.135.213' 
+                 
+                  sh 'sudo docker rm -f javaweb'
+                  
+                  sh "sudo docker run -d  -p  1234:8080  --name  javaweb   ppraveen11/javaweb:${BUILD_TAG}" 
+                
+                 
+                }
+        }   }
+      
+
+
         }
                  
     } 
