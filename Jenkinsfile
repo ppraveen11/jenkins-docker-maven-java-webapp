@@ -104,11 +104,11 @@ pipeline {
                 
                 sshagent(['FORQAT']) {
               // some block
-                 sh 'ssh  -o  StrictHostKeyChecking=no ec2-user@43.205.95.151' 
+                    sh 'ssh  -o  StrictHostKeyChecking=no ec2-user@43.205.95.151' 
                  
-                  sh 'sudo docker rm -f javaweb'
+                    sh 'sudo docker rm -f javaweb'
                   
-                  sh "sudo docker run -d  -p  1234:8080  --name  javaweb   ppraveen11/javaweb:${BUILD_TAG}" 
+                    sh "sudo docker run -d  -p  1233:8080  --name  javaweb   ppraveen11/javaweb:${BUILD_TAG}" 
                 
                  
                 }
