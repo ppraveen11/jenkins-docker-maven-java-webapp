@@ -35,7 +35,7 @@ pipeline {
            withCredentials([string(credentialsId: 'DOCKER_HUB_PASSWD', variable: 'docker_hub_psswd_var')]) {
     // some block
 
-                       sh "sudo docker login  -u  ppraveen11  -p  $docker_hub_passwd_var" 
+                       sh "sudo docker login  -u  ppraveen11  -p  $docker_hub_psswd_var" 
 
                }
                           
