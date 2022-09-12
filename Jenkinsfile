@@ -57,7 +57,7 @@ pipeline {
         stage("Deploying WEBAPP in QAT/TEST env "){ 
             steps{ 
                 
-                sshagent(['FORQAT']) {
+                sshagent(['QAT_TEST']) {
     // some block
                  sh 'ssh  -o  StrictHostKeyChecking=no ec2-user@13.233.9.156' 
                  
@@ -69,7 +69,7 @@ pipeline {
                 }
         }   }
             
-            stage('QAT/TEST'){
+            stage('QAT_TEST'){
                 
                 
                  steps{
