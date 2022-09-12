@@ -102,7 +102,7 @@ pipeline {
           stage("Deploying WEBAPP in prod env "){ 
             steps{ 
                 
-                sshagent(['FORQAT']) {
+                sshagent(['QAT_TEST']) {
               
                     sh 'ssh  -o  StrictHostKeyChecking=no ec2-user@43.205.95.151' 
                  
