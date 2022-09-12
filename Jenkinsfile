@@ -32,12 +32,12 @@ pipeline {
                     
            steps{ 
                           
-            withCredentials([string(credentialsId: 'DOCKER-HUB-PASSWD', variable: 'docker_hub_var')]) {
+           withCredentials([string(credentialsId: 'DOCKER_HUB_PASSWD', variable: 'docker_hub_psswd_var')]) {
     // some block
 
-                sh " sudo docker login  -u  ppraveen11  -p  $docker_hub_var " 
-                  
-              }
+               sh " sudo docker login  -u  ppraveen11  -p  $docker_hub_var " 
+
+                     }
                           
            sh "sudo docker push   ppraveen11/javaweb:${BUILD_TAG}"
               
