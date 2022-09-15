@@ -59,7 +59,7 @@ pipeline {
                 
                 sshagent(['QAT_TEST']) {
     // some block
-                 sh 'ssh  -o  StrictHostKeyChecking=no ec2-user@13.233.9.156' 
+                 sh 'ssh  -o  StrictHostKeyChecking=no ec2-user@52.66.213.54' 
                  
                   sh 'sudo docker rm -f javaweb'
                   
@@ -104,7 +104,7 @@ pipeline {
                 
                 sshagent(['QAT_TEST']) {
               
-                    sh 'ssh  -o  StrictHostKeyChecking=no ec2-user@13.233.9.156' 
+                    sh 'ssh  -o  StrictHostKeyChecking=no ec2-user@52.66.213.54' 
                  
                     sh 'sudo docker rm -f javaweb'
                   
