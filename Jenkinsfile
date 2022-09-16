@@ -48,9 +48,9 @@ pipeline {
         stage("Deploying WEBAPP in dev env "){ 
             steps{ 
                 
-                sh 'sudo docker rm -f javaweb'
+                sh 'sudo docker rm -f javawebapp'
                 
-                sh "sudo docker run -d  -p  1234:8080  --name  javaweb    ppraveen11/javaweb:${BUILD_TAG} "  
+                sh "sudo docker run -d  -p  1234:8080  --name  javawebapp    ppraveen11/javaweb:${BUILD_TAG} "  
                 
             } }
             
@@ -61,9 +61,9 @@ pipeline {
     // some block
                  sh 'ssh  -o  StrictHostKeyChecking=no ec2-user@52.66.213.54' 
                  
-                  sh 'sudo docker rm -f javaweb'
+                  sh 'sudo docker rm -f javawebapp'
                   
-                  sh "sudo docker run -d  -p  1234:8080  --name  javaweb   ppraveen11/javaweb:${BUILD_TAG}" 
+                  sh "sudo docker run -d  -p  1234:8080  --name  javawebapp   ppraveen11/javaweb:${BUILD_TAG}" 
                 
                  
                 }
@@ -106,9 +106,13 @@ pipeline {
               
                     sh 'ssh  -o  StrictHostKeyChecking=no ec2-user@52.66.213.54' 
                  
-                    sh 'sudo docker rm -f javaweb'
+                    sh "sudo kubectl  delete deployment javawebapp"
                   
-                    sh "sudo docker run -d  -p  1233:8080  --name  javaweb   ppraveen11/javaweb:${BUILD_TAG}" 
+                    sh "sudo kubectl create deployment javawebapp --image=ppraveen11/javaweb:${BUILD_TAG}"
+
+		    sh "sudo kubectl apply -f webapsvc.yml"
+
+		    sh "sudo kubectl scale deployment javawebapp --replicas=5"
                 
                  
                 }
