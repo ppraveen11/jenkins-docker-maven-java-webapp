@@ -102,9 +102,9 @@ pipeline {
           stage("Deploying WEBAPP in prod env "){ 
             steps{ 
                 
-                sshagent(['QAT_TEST']) {
+                sshagent(['k8s-master-key']) {
               
-                    sh 'ssh  -o  StrictHostKeyChecking=no ec2-user@52.66.213.54' 
+                    sh 'ssh  -o  StrictHostKeyChecking=no ec2-user@15.207.108.200' 
                  
                     sh "sudo kubectl  delete deployment javawebapp"
                   
