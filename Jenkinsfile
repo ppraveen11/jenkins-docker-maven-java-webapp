@@ -59,7 +59,7 @@ pipeline {
                 
                 sshagent(['QAT_TEST']) {
     // some block
-                 sh 'ssh  -o  StrictHostKeyChecking=no ec2-user@52.66.213.54' 
+                 sh 'ssh  -o  StrictHostKeyChecking=no ec2-user@65.2.38.117' 
                  
                   sh 'sudo docker rm -f javawebapp'
                   
@@ -73,7 +73,7 @@ pipeline {
                 
                 
                  steps{
-                        //sh 'curl --silent  http://43.205.135.213.231:1234/java-web-app/ | grep India'
+                        //sh 'curl --silent  http://65.2.38.117.231:1234/java-web-app/ | grep India'
                         
                         echo "hello its QAT"
                      
