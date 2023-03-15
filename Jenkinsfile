@@ -59,7 +59,7 @@ pipeline {
                 
                 sshagent(['QAT_TEST']) {
     // some block
-                 sh 'ssh  -o  StrictHostKeyChecking=no ec2-user@3.110.85.253' 
+                 sh 'ssh  -o  StrictHostKeyChecking=no ec2-user@43.205.196.152' 
                  
                   sh 'sudo docker rm -f javawebapp'
                   
@@ -104,7 +104,7 @@ pipeline {
                 
                 sshagent(['k8s-master-key']) {
               
-                    sh 'ssh  -o  StrictHostKeyChecking=no ec2-user@13.232.51.114' 
+                    sh 'ssh  -o  StrictHostKeyChecking=no ec2-user@13.234.114.208' 
                    sh "ssh  ec2-user@13.232.51.114  sudo kubectl  delete deployment javawebapp"
                   sh "sudo kubectl create deployment javawebapp --image=ppraveen11/javaweb:${BUILD_TAG}"
                  sh "sudo kubectl apply -f webapsvc.yml"
